@@ -32,3 +32,17 @@ type Token struct {
 	Type    TokenType
 	Literal string
 }
+
+// 关键字
+var keywords = map[string]TokenType{
+	"fn":  FUNCTION,
+	"let": LET,
+}
+
+// LookupIdent 判断标识符是否为关键字
+func LookupIdent(ident string) TokenType {
+	if tok, ok := keywords[ident]; ok {
+		return tok
+	}
+	return IDENT
+}
