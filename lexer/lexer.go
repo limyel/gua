@@ -31,6 +31,7 @@ func (l *Lexer) readChar() {
 	l.readPosition += 1
 }
 
+// 生成下一个词法单元
 func (l *Lexer) NextToken() token.Token {
 	var tok token.Token
 
@@ -111,6 +112,7 @@ func isDigit(ch byte) bool {
 	return '0' <= ch && ch <= '9'
 }
 
+// 跳过标识符、关键字和符号之间的空白字符
 func (l *Lexer) skipWhitespace() {
 	for l.ch == ' ' || l.ch == '\t' || l.ch == '\n' || l.ch == '\r' {
 		l.readChar()
