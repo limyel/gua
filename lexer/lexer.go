@@ -117,14 +117,17 @@ func (l *Lexer) skipWhitespace() {
 	}
 }
 
+// 读取标识符
 func (l *Lexer) readIdentifier() string {
 	position := l.position
 	for isLetter(l.ch) {
 		l.readChar()
 	}
+	// 遇到非标识符字符，返回
 	return l.input[position:l.position]
 }
 
+// 判断是否为标识符
 func isLetter(ch byte) bool {
 	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_'
 }

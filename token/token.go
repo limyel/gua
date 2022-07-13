@@ -43,6 +43,7 @@ const (
 	RETURN   = "RETURN"
 )
 
+// 词法单元
 type Token struct {
 	Type    TokenType
 	Literal string
@@ -59,7 +60,7 @@ var keywords = map[string]TokenType{
 	"return": RETURN,
 }
 
-// LookupIdent 判断标识符是否为关键字
+// 判断标识符是否为关键字
 func LookupIdent(ident string) TokenType {
 	if tok, ok := keywords[ident]; ok {
 		return tok
